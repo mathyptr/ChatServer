@@ -31,7 +31,7 @@ public ThreadClient (BufferedReader inputServer, String clientName){//viene pass
 				if (result.equalsIgnoreCase("Arrivederci " + clientName))
 					endChat = true; //viene settata la variabile a true poiche' l'utente ha digitato il comando di uscita
 			} catch (Exception e) {
-				System.out.println("errore input");
+				System.out.println("errore dal server");
 				endChat = true; //in caso di errore con il server viene settata la variabile a true per uscire dal ciclo
 			}
 		}

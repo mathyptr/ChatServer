@@ -42,12 +42,21 @@ public class Server {
 				System.out.println("Errore di connessione");
 				break;
 			}
-			ThreadVect.addElement(new ThreadServer(ThreadVect, clientSocket)); // viene inserito un nuovo ThreadServer
-																				// nel vettore che si occupera' della
+			ThreadVect.addElement(new ThreadServer(ThreadVect, clientSocket)); // viene inserito un nuovo
+																				// ThreadServer
+																				// nel vettore che si occupera'
+																				// della
 																				// comunicazione con il client
-			ThreadVect.elementAt(ThreadVect.size() - 1).start();// il thread in questione viene fatto partire
-			System.out.println("Thread " + ThreadVect.size() + " partito");
-			checkThread();// controllo che i thread siano ancora vivi
+			if (ThreadVect.size() <= 2) {
+				ThreadVect.elementAt(ThreadVect.size() - 1).start();// il thread in questione viene fatto partire
+				System.out.println("Thread " + ThreadVect.size() + " partito");
+				checkThread();// controllo che i thread siano ancora vivi
+			} else {
+				ThreadServer Thread3=((ThreadServer)ThreadVect.elementAt(ThreadVect.size()-1));
+				System.out.println("Errore richiesta da un terzo Client: possono essere presenti solo due Client");
+				Thread3.SendMSG("Mi dispiace, la chat e' gia utilizzata da due utenti. Riprova piu' tardi");
+				ThreadVect.removeElementAt(ThreadVect.size()-1);
+			}
 		}
 	}
 

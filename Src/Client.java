@@ -16,7 +16,7 @@ public class Client {
 	BufferedReader keyboard;
 	BufferedReader inputServer;
 	ThreadClient thC = null;
-
+ 
 	String HELLO_CMD = "ciao sono"; // comando di identificazione client
 
 	/**
